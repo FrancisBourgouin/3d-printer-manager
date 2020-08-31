@@ -32,7 +32,11 @@ module.exports = [
       // Compiles Sass to CSS
       'sass-loader',
     ],
-  }
+  },
+  {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  },
   // Put your webpack loader rules in this array.  This is where you would put
   // your ts-loader configuration for instance:
   /**

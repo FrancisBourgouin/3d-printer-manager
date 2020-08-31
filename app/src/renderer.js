@@ -29,7 +29,8 @@
 import './client/index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './client/components/App.jsx'
+import { hot } from 'react-hot-loader'
+import App from './client/components/App'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -37,3 +38,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+export default hot(module)(App)

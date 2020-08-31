@@ -1,31 +1,52 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import Home from './Home';
+import Printers from './Printers';
+import Filaments from './Filaments';
+import Models from './Models';
+import Prints from './Prints';
+import Dashboard from './Dashboard';
+import Header from './Header';
+import Footer from './Footer';
 import "../styles/App.scss"
+import { initialState, reducer } from '../helpers/reducer'
+
 
 const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <Router>
       <div className="App">
-        <header>
-          <Link to="/">Home</Link>
-          <Link to="/">3D Printers</Link>
-          <Link to="/">Filaments</Link>
-          <Link to="/">Models</Link>
-          <Link to="/">Other files</Link>
-          <Link to="/">Preferences</Link>
-        </header>
+        <Header />
         <main>
-
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/printers">
+              <Printers {...{ state, dispatch }} />
+            </Route>
+            <Route path="/prints">
+              <Prints />
+            </Route>
+            <Route path="/filaments">
+              <Filaments />
+            </Route>
+            <Route path="/models">
+              <Models />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+          </Switch>
         </main>
-        <footer>
-          <span>Made for fun by Francis Bourgouin</span>
-        </footer>
+        <Footer />
       </div>
     </Router>
   )
