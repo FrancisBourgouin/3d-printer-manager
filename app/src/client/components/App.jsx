@@ -19,7 +19,6 @@ import { initialState, reducer } from '../helpers/reducer'
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-
   return (
     <Router>
       <div className="App">
